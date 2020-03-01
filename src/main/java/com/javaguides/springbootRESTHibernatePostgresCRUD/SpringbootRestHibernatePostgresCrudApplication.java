@@ -8,6 +8,7 @@ public class SpringbootRestHibernatePostgresCrudApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootRestHibernatePostgresCrudApplication.class, args);
+		System.out.println("----Application Starting-------");
 	}
 
 }
