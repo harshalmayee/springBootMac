@@ -1,1 +1,0 @@
-create table employee (id bigint not null AUTO_INCREMENT, email varchar(255), first_name varchar(255), last_name varchar(255), profession varchar(255), primary key (id));
