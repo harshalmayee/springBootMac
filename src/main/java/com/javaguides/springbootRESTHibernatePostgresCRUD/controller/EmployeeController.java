@@ -38,7 +38,9 @@ public class EmployeeController {
 							array = @ArraySchema(schema = @Schema(implementation = Employee.class)),
 							mediaType = MediaType.APPLICATION_JSON_VALUE)
 
-			)
+			),@ApiResponse(
+					responseCode = "500",
+	                description = "Internal Server Error")
 	})
 	@GetMapping(value = "/employees",produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<Employee> getAllEmployees() {
@@ -58,7 +60,10 @@ public class EmployeeController {
 			@ApiResponse(
 					responseCode = "404",
 					description = "Employee Not Found"
-			)
+			),
+			@ApiResponse(
+			        responseCode = "500",
+			        description = "Internal Server Error")
 	})
 	@GetMapping(value = "/employees/{id}" ,produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Employee> getEmployeeById(@PathVariable(value = "id") Long employeeId)
@@ -84,7 +89,10 @@ public class EmployeeController {
 			@ApiResponse(
 					responseCode = "409",
 					description = "Record Already Exist"
-			)
+			),
+			@ApiResponse(
+			        responseCode = "500",
+			        description = "Internal Server Error")
 
 	})
 	@PostMapping(value = "/employees" ,consumes = MediaType.APPLICATION_JSON_VALUE ,produces = MediaType.APPLICATION_JSON_VALUE)
@@ -117,7 +125,10 @@ public class EmployeeController {
 			@ApiResponse(
 			      responseCode = "405",
 			      description ="Validation Exception"
-			)
+			),
+			@ApiResponse(
+			responseCode = "500",
+			description = "Internal Server Error")
 	})
 	@PutMapping(value = "/employees/{id}",consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
@@ -144,7 +155,10 @@ public class EmployeeController {
 			@ApiResponse(
 					responseCode = "404",
 					description = "Record Not Found"
-			)
+			),
+			@ApiResponse(
+			responseCode = "500",
+			description = "Internal Server Error")
 	})
 	@DeleteMapping("/employees/{id}")
 	public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
